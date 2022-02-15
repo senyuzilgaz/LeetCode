@@ -1,18 +1,9 @@
 class Solution {
 public:
     bool isAnagram(string s, string t) {
-        return Hash(s) == Hash(t);
+        sort(s.begin(),s.end());
+        sort(t.begin(),t.end());
+        return s == t;
     }
     
-    int Hash(string str)
-    {
-        sort(str.begin(),str.end());
-        long hash = 0 , mult = 1;
-        for(char ch : str)
-        {
-            hash += ch*mult*mult;
-            mult += 1;
-        }
-        return hash;    
-    }
 };

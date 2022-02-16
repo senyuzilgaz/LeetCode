@@ -11,60 +11,30 @@
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-        if( !(list1 || list2) )
-            return NULL;
-        ListNode* solution = new ListNode;
-        ListNode* temp = solution;
-        while(list1 && list2)
-        {
-            bool comparison = (list1 -> val) < (list2 -> val);
-            if(comparison)
-            {
-                temp -> val = list1 -> val;
-                temp -> next = new ListNode;
-                temp = temp -> next;
-                list1 = list1 -> next;
-            }
-            else
-            {
-                temp -> val = list2 -> val;
-                temp -> next = new ListNode;
-                temp = temp -> next;
-                list2 = list2 -> next;
+        ListNode *node1 = list1, *node2 = list2, *prev = nullptr;
+        if(list1 == nullptr)
+            return list2;
+        if(list2 == nullptr)
+            return list1;
+        
+        while(node1 != nullptr && node2 != nullptr){
+            if(node1 -> val < node2 -> val){
+                prev = node1;
+                node1 = node1 -> next;
+            }else{
+                if(prev != nullptr)
+                    prev -> next = node2;
+                prev = node2;
+                node2 = node2 -> next;     
+                prev -> next = node1;
             }
         }
-        if(list1)
-        {
-            while(list1)
-            {
-                temp -> val = list1 -> val;
-                list1 = list1 -> next;
-                if(list1)
-                {
-                    temp -> next = new ListNode;
-                    temp = temp -> next;
-                }
-                else
-                    temp -> next = NULL;
-
-            }
-        }
-        else if(list2)
-        {
-            while(list2)
-            {
-                temp -> val = list2 -> val;
-                list2 = list2 -> next;
-                if(list2)
-                {
-                    temp -> next = new ListNode;
-                    temp = temp -> next;
-                }
-                else
-                    temp -> next = NULL;
-            }
-        }
-        return solution;
+        if(node1 == nullptr)
+            prev -> next = node2;
+        
+        if(list1 -> val < list2 -> val)
+            return list1;
+        return list2;
         
     }
 };

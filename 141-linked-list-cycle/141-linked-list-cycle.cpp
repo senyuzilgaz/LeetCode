@@ -5,8 +5,6 @@ public:
         ListNode *first = head, *second = head;
         if(second == nullptr)
             return false;
-        if(second -> next == nullptr)
-            return false;
         while(second -> next != nullptr && second -> next -> next != nullptr){
             second = second -> next -> next;
             first = first -> next;

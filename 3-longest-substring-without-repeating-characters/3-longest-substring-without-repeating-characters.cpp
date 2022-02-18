@@ -2,7 +2,8 @@ class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
         int len = s.length();
-        vector<int> longest = {0, 1};
+        int longest = 0;
+        int current = 0;
         unordered_map<char, int> lastSeen;
         int startIndex = 0;
         
@@ -14,12 +15,10 @@ public:
             if(lastSeen.find(ch) != lastSeen.end()){
                 startIndex = max(startIndex, lastSeen[ch] + 1);
             }
-            if(longest[1] - longest[0] < i + 1 - startIndex){
-                longest = {startIndex, i + 1};
-            }
+            longest = max(longest, i + 1 - startIndex);
             lastSeen[ch] = i;
         }
         
-         return longest[1] - longest[0];
+         return longest;
     }
 };

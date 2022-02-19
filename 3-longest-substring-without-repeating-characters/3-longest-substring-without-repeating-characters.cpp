@@ -6,10 +6,8 @@ public:
         int startIndex = 0;
         for(int i = 0; i < s.length(); ++i){
             char ch = s[i];
-            if(lastSeen.find(ch) != lastSeen.end()){
+            if(lastSeen.find(ch) != lastSeen.end())
                 startIndex = max(startIndex, lastSeen[ch] + 1);
-            }
-            
             lastSeen[ch] = i;
             longest = max(longest, i - startIndex + 1);
         }

@@ -13,13 +13,11 @@ public:
             return false;
         visited[start] = 1;
         
-        if( (start < arr.size()) && (start >=0)){
-            return arr[start] == 0
-                    || helper(arr, start + arr[start], visited)
-                    || helper(arr, start - arr[start], visited);
-        }
-        
-        return false;        
+
+        return arr[start] == 0
+            || helper(arr, start + arr[start], visited)
+            || helper(arr, start - arr[start], visited);
+     
     }
 
 };

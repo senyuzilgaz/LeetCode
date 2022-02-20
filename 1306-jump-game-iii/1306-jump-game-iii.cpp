@@ -7,9 +7,7 @@ public:
         
     }
     bool helper(vector<int>& arr, int start, vector<bool> &visited){
-        if( start >= arr.size() )
-            return false;
-        if( start < 0)
+        if(start < 0 || start >= arr.size())
             return false;
         if(visited[start] == true)
             return false;

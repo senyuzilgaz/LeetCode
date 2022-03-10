@@ -1,8 +1,6 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        /*if(nums.size() == 1)
-            return nums[0] == 1 ? 2 : 1;*/
         int highest = 0;
         unordered_map<int, bool> meta;
         for(int i : nums){

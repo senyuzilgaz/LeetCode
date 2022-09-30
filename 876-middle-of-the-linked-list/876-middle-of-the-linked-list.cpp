@@ -16,7 +16,6 @@ public:
             head = head -> next;
             front = front -> next -> next;
         }
-        
         return head;
     }   
 };

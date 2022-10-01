@@ -20,17 +20,21 @@ public:
 
 class Solution {
 public:
-    vector<int> preorder(Node* root) {
-        vector<int> result;
-        helper(root, result);
-        return result;
+    vector<int> travel(Node* root, vector<int> &res) {
+        
+        for( auto node : root -> children){
+            res.push_back(node -> val);
+            travel(node, res);
+        }
+        return res;
     }
-    void helper(Node*node, vector<int> &result){
-        if(node == nullptr)
-            return;
-        result.push_back(node -> val);
-        for(auto ch : node -> children)
-            helper(ch, result);
-
+    vector<int> preorder(Node* root){
+        vector<int> res;
+        if(root == nullptr)
+            return res;
+        res.push_back(root -> val);
+        travel(root, res);
+        return res;
     }
+    
 };

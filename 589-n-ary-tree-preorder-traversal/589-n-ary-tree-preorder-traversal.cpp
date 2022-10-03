@@ -20,8 +20,7 @@ public:
 
 class Solution {
 public:
-    vector<int> travel(Node* root, vector<int> &res) {
-        
+    vector<int> travel(Node* root, vector<int> &res) {      
         for( auto node : root -> children){
             res.push_back(node -> val);
             travel(node, res);

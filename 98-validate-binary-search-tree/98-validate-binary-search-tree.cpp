@@ -13,19 +13,13 @@ class Solution {
 public:
     bool isValidBST(TreeNode* root) {
         vector<int> tree;
-        pushTree(root, tree);
-        cout << tree.size();
-        for(int i = tree.size() - 1; i > 0; --i){
-            cout << tree[i];
-            if(tree[i] <= tree[i-1])
-                return false;
-        }
-        return true;
+        return pushTree(root);
     }
     
-    void pushTree(TreeNode* root, vector<int> &tree){
+    bool pushTree(TreeNode* root){
+        TreeNode* prev = NULL;
         if(!root)
-            return;
+            return true;
         stack<TreeNode*> sta;
         TreeNode *current = root;
     
@@ -36,10 +30,13 @@ public:
             }
             current = sta.top();
             sta.pop();
-            tree.push_back(current -> val);
+            if(prev != NULL and current -> val <= prev -> val)
+                return false;
+            prev = current;
             current = current -> right;
                 
         }
+        return true;
     }
 
 };

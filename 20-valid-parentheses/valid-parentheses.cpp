@@ -10,11 +10,9 @@ public:
             if (ch == '(' || ch == '{' || ch == '[') {
                 st.push(ch);
             } else if (ch == ')' || ch == '}' || ch == ']'){
-                if (st.empty())
+                if (st.empty() || st.top() != closing[ch])
                     return false;
-                if (st.top() != closing[ch])
-                    return false;
-                //stacks top is opening bracelet
+                //stacks top is the relevant opening bracelet
                 st.pop();
             }
         }

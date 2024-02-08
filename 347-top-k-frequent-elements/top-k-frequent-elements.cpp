@@ -16,7 +16,7 @@ public:
         for (int num : nums)
             ++frequencies[num];
         for (auto pair : frequencies)
-            pq.push({pair.first, pair.second});
+            pq.push(pair);
         while (!pq.empty() && k--) {
             result.push_back(pq.top().first);
             pq.pop();

@@ -32,9 +32,7 @@ public:
                     list2 = list2 -> next;
                 }
             }
-           
         }
-
         return result -> next;
     }
 };
